@@ -15,10 +15,34 @@ function get_username($u_id,$a_token)
 	$response = curl_exec($ch1);			
 	$events2 = json_decode($response, true);
 	$username = $events2['displayName'];
-	curl_close($curl);
+	curl_close($ch1);
     	return $username;
 }
-
+function message_reply($u_id,$a_token,$rp_token,$ms)
+{
+	$header = array('Content-Type: application/json', 'Authorization: Bearer ' . $a_token);
+	// Build message to reply back
+	$message = [
+		'type' => 'text',
+		'text' => $ms
+	];
+			
+	// Make a POST Request to Messaging API to reply to sender
+	$url2 = 'https://api.line.me/v2/bot/message/reply';
+	$data2 = [
+		'replyToken' => $rp_token,
+		'messages' => [$message],
+		];
+		$post2 = json_encode($data2);
+		$ch2 = curl_init($url2);
+		curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST");
+		curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch2, CURLOPT_POSTFIELDS, $post2);
+		curl_setopt($ch2, CURLOPT_HTTPHEADER, $header);
+		curl_setopt($ch2, CURLOPT_FOLLOWLOCATION, 1);
+		$result = curl_exec($ch2);
+		curl_close($ch2);
+}
 $access_token = 'cZeyyqmrjKEi1gWN6pUlPPpZTvTfS8PSmocdnOwaZYbcnn6yFsSdKpGqRAJvy8qYg2YxNTPN1R/89DmRzcpdLRbO9Y3TptL99fuxg0kv4LAaGK9kIKoj00Xu+gJyQPZhW75SsXtunyedT8ZURD4JoQdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -33,38 +57,11 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$userid = $event['source']['userId'];
-			$username = get_username($userid,$access_token);
-			
-			$text = "You is ".$username." UserId:".$userid;
-	
+			$username = get_username($userid,$access_token);			
+			$text = "You is ".$username." UserId:".$userid;	
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $text
-			];
-			
-			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
-			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data);
-			
-
-			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			$result = curl_exec($ch);
-			curl_close($ch);
-
-			echo $result . "\r\n";
+			message_reply($userid,$access_token,$replyToken,$text);
 		}
 	}
 }
