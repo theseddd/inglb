@@ -62,7 +62,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			$_msg = $event['message']['text'];
-			if(strpos($_msg, 'TAMS')!== false||strpos($_msg, 'Tams')!== false||strpos($_msg, 'tams')!== false)){
+			if(strpos($_msg, 'TAMS')!== false||strpos($_msg, 'Tams')!== false||strpos($_msg, 'tams')!== false){
 				if(strpos($_msg, 'สวัสดี') !== false){
 					$text = "สวัสดี ".$username;	
 					message_reply($userid,$access_token,$replyToken,$text);
