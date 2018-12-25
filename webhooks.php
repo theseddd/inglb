@@ -16,22 +16,17 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$curl = curl_init();
 			$userid = $event['source']['userId'];
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$url1 = 'https://api.line.me/v2/bot/profile/'.$userid;
+			$ch1 = curl_init($url1);
+			curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "GET");
+			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch1, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch1, CURLOPT_FOLLOWLOCATION, 1);
 			
-			curl_setopt_array($curl, array(
-			  CURLOPT_URL => "GET https://api.line.me/v2/bot/profile/".$userid,
-			  CURLOPT_RETURNTRANSFER => true,
-			  CURLOPT_TIMEOUT => 30,
-			  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			  CURLOPT_CUSTOMREQUEST => "GET",
-			  CURLOPT_HTTPHEADER => array(
-			    "cache-control: no-cache"
-			  ),
-			));
-
-			$response = curl_exec($curl);
-			$err = curl_error($curl);
+			$response = curl_exec($ch1);
+			
 			$events2 = json_decode($response, true);
 			$username = $events2['displayName'];
 			curl_close($curl);
@@ -54,7 +49,7 @@ if (!is_null($events['events'])) {
 				'messages' => [$messages],
 			];
 			$post = json_encode($data);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			
 
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
