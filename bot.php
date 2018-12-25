@@ -1,8 +1,8 @@
 <?php
    $accessToken = "cZeyyqmrjKEi1gWN6pUlPPpZTvTfS8PSmocdnOwaZYbcnn6yFsSdKpGqRAJvy8qYg2YxNTPN1R/89DmRzcpdLRbO9Y3TptL99fuxg0kv4LAaGK9kIKoj00Xu+gJyQPZhW75SsXtunyedT8ZURD4JoQdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
-$content = file_get_contents('php://input');
+   $content = file_get_contents('php://input');
    $arrayJson = json_decode($content, true);
-$arrayHeader = array();
+   $arrayHeader = array();
    $arrayHeader[] = "Content-Type: application/json";
    $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 //รับข้อความจากผู้ใช้
