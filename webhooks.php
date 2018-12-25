@@ -16,7 +16,27 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$text = "You is ".$event['source']['displayName']." UserId:".$event['source']['userId'];
+			$curl = curl_init();
+			$userid = $event['source']['userId'];
+			
+			curl_setopt_array($curl, array(
+			  CURLOPT_URL => "GET https://api.line.me/v2/bot/profile/".$userid,
+			  CURLOPT_RETURNTRANSFER => true,
+			  CURLOPT_TIMEOUT => 30,
+			  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			  CURLOPT_CUSTOMREQUEST => "GET",
+			  CURLOPT_HTTPHEADER => array(
+			    "cache-control: no-cache"
+			  ),
+			));
+
+			$response = curl_exec($curl);
+			$err = curl_error($curl);
+			$events2 = json_decode($response, true);
+			$username = $events2['displayName'];
+			curl_close($curl);
+			
+			$text = "You is ".$username." UserId:".$userid;
 	
 			// Get replyToken
 			$replyToken = $event['replyToken'];
@@ -26,7 +46,7 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => $text
 			];
-
+			
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
