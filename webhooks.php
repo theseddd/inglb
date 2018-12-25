@@ -61,25 +61,27 @@ if (!is_null($events['events'])) {
 			
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-			
-			if($event['message']['text'] == 'สวัสดี'){
-				$text = "สวัสดี ".$username;	
-				message_reply($userid,$access_token,$replyToken,$text);
-			}else if($event['message']['text'] == 'ทำงานนอกสถานที่'){
-				$text = "บันทึกเรียบร้อยแล้ว @".$username;	
-				message_reply($userid,$access_token,$replyToken,$text);
-			}else if($event['message']['text'] == 'ลาป่วย'){
-				$text = "บันทึกเรียบร้อยแล้ว @".$username;		
-				message_reply($userid,$access_token,$replyToken,$text);
-			}else if($event['message']['text'] == 'ลากิจ'){
-				$text = "บันทึกเรียบร้อยแล้ว @".$username;		
-				message_reply($userid,$access_token,$replyToken,$text);
-			}else if($event['message']['text'] == 'ลาพักร้อน'){
-				$text = "บันทึกเรียบร้อยแล้ว @".$username;	
-				message_reply($userid,$access_token,$replyToken,$text);
-			}else{
-				$text = "You is ".$username." UserId:".$userid;	
-				message_reply($userid,$access_token,$replyToken,$text);
+			$_msg = $event['message']['text'];
+			if(strpos($_msg, 'TAMS')!== false||strpos($_msg, 'Tams')!== false||strpos($_msg, 'tams')!== false)){
+				if(strpos($_msg, 'สวัสดี') !== false){
+					$text = "สวัสดี ".$username;	
+					message_reply($userid,$access_token,$replyToken,$text);
+				}else if(strpos($_msg, 'ทำงานนอกสถานที่') !== false){
+					$text = "บันทึกเรียบร้อยแล้ว @".$username;	
+					message_reply($userid,$access_token,$replyToken,$text);
+				}else if(strpos($_msg, 'ลาป่วย') !== false){
+					$text = "บันทึกเรียบร้อยแล้ว @".$username;		
+					message_reply($userid,$access_token,$replyToken,$text);
+				}else if(strpos($_msg, 'ลากิจ') !== false){
+					$text = "บันทึกเรียบร้อยแล้ว @".$username;		
+					message_reply($userid,$access_token,$replyToken,$text);
+				}else if(strpos($_msg, 'ลาพักร้อน') !== false){
+					$text = "บันทึกเรียบร้อยแล้ว @".$username;	
+					message_reply($userid,$access_token,$replyToken,$text);
+				}else{
+					$text = "You is ".$username." UserId:".$userid;	
+					message_reply($userid,$access_token,$replyToken,$text);
+				}
 			}
 		}
 	}
