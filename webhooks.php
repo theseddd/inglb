@@ -65,6 +65,18 @@ if (!is_null($events['events'])) {
 			if($event['message']['text'] == 'สวัสดี'){
 				$text = "สวัสดี ".$username;	
 				message_reply($userid,$access_token,$replyToken,$text);
+			}else if($event['message']['text'] == 'ทำงานนอกสถานที่'){
+				$text = "บันทึกเรียบร้อยแล้ว @".$username;	
+				message_reply($userid,$access_token,$replyToken,$text);
+			}else if($event['message']['text'] == 'ลาป่วย'){
+				$text = "บันทึกเรียบร้อยแล้ว @".$username;		
+				message_reply($userid,$access_token,$replyToken,$text);
+			}else if($event['message']['text'] == 'ลากิจ'){
+				$text = "บันทึกเรียบร้อยแล้ว @".$username;		
+				message_reply($userid,$access_token,$replyToken,$text);
+			}else if($event['message']['text'] == 'ลาพักร้อน'){
+				$text = "บันทึกเรียบร้อยแล้ว @".$username;	
+				message_reply($userid,$access_token,$replyToken,$text);
 			}else{
 				$text = "You is ".$username." UserId:".$userid;	
 				message_reply($userid,$access_token,$replyToken,$text);
