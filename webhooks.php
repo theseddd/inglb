@@ -17,9 +17,9 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = "You is ";
-			$text =+ $event['source']['displayName'];
-			$text =+ " UserId:";
-			$text =+ $event['source']['userId'];
+			$text =. $event['source']['displayName'];
+			$text =. " UserId:";
+			$text =. $event['source']['userId'];
 	
 			// Get replyToken
 			$replyToken = $event['replyToken'];
