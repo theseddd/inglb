@@ -58,10 +58,17 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			$userid = $event['source']['userId'];
 			$username = get_username($userid,$access_token);			
-			$text = "You is ".$username." UserId:".$userid;	
+			
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-			message_reply($userid,$access_token,$replyToken,$text);
+			
+			if($event['message']['text'] == 'สวัสดี'){
+				$text = "สวัสดี ".$username;	
+				message_reply($userid,$access_token,$replyToken,$text);
+			}else{
+				$text = "You is ".$username." UserId:".$userid;	
+				message_reply($userid,$access_token,$replyToken,$text);
+			}
 		}
 	}
 }
