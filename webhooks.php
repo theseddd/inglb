@@ -3,6 +3,22 @@
 require "vendor/autoload.php";
 require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
+function get_username($u_id,$a_token)
+{
+	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $a_token);
+	$url1 = 'https://api.line.me/v2/bot/profile/'.$u_id;
+	$ch1 = curl_init($url1);
+	curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "GET");
+	curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch1, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($ch1, CURLOPT_FOLLOWLOCATION, 1);			
+	$response = curl_exec($ch1);			
+	$events2 = json_decode($response, true);
+	$username = $events2['displayName'];
+	curl_close($curl);
+    	return $username;
+}
+
 $access_token = 'cZeyyqmrjKEi1gWN6pUlPPpZTvTfS8PSmocdnOwaZYbcnn6yFsSdKpGqRAJvy8qYg2YxNTPN1R/89DmRzcpdLRbO9Y3TptL99fuxg0kv4LAaGK9kIKoj00Xu+gJyQPZhW75SsXtunyedT8ZURD4JoQdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -17,19 +33,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$userid = $event['source']['userId'];
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-			$url1 = 'https://api.line.me/v2/bot/profile/'.$userid;
-			$ch1 = curl_init($url1);
-			curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "GET");
-			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch1, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($ch1, CURLOPT_FOLLOWLOCATION, 1);
-			
-			$response = curl_exec($ch1);
-			
-			$events2 = json_decode($response, true);
-			$username = $events2['displayName'];
-			curl_close($curl);
+			$username = get_username($userid,$access_token);
 			
 			$text = "You is ".$username." UserId:".$userid;
 	
