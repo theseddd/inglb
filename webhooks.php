@@ -5,12 +5,12 @@ require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
 function get_username($u_id,$a_token)
 {
-	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $a_token);
+	$header = array('Content-Type: application/json', 'Authorization: Bearer ' . $a_token);
 	$url1 = 'https://api.line.me/v2/bot/profile/'.$u_id;
 	$ch1 = curl_init($url1);
 	curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "GET");
 	curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch1, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($ch1, CURLOPT_HTTPHEADER, $header);
 	curl_setopt($ch1, CURLOPT_FOLLOWLOCATION, 1);			
 	$response = curl_exec($ch1);			
 	$events2 = json_decode($response, true);
@@ -39,7 +39,7 @@ if (!is_null($events['events'])) {
 	
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
