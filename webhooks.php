@@ -20,8 +20,7 @@ if (!is_null($events['events'])) {
 			$text =+ $event['source']['displayName'];
 			$text =+ " UserId:";
 			$text =+ $event['source']['userId'];
-			
-			"displayName":"Brown"
+	
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
