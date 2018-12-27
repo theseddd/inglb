@@ -11,7 +11,7 @@ $range_M = strval(date("m"));
 $header = array('Content-Type: application/json');
 
 //$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.'12?valueRenderOption=FORMATTED_VALUE&key='.$spreadsheetId;
-$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F12?valueRenderOption=FORMATTED_VALUE&key='.$apikey;
+$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.'?valueRenderOption=FORMATTED_VALUE&key='.$apikey;
 $ch1 = curl_init($url1);
 curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "GET");
 curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
