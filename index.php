@@ -1,15 +1,15 @@
 <?php
 date_default_timezone_set("Asia/Bangkok");
-$timestamp = date("d/m/Y h:i:s");
-$date = date("d/m/Y");
-$time = date("h:i:s");
+$timestamp = strval(date("d/m/Y h:i:s"));
+$date = strval(date("d/m/Y"));
+$time = strval(date("h:i:s"));
 $spreadsheetId = "1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30";
 $apikey = "AIzaSyAgSEnkENLqDB2Udps_qKvXcv7HwRQUsrE";
-$range_Y = date("Y");
-$range_M = date("m");
+$range_Y = strval(date("Y"));
+$range_M = strval(date("m"));
 
 $header = array('Content-Type: application/json');
-https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30/values/2018%2F12?valueRenderOption=FORMATTED_VALUE&key=AIzaSyAgSEnkENLqDB2Udps_qKvXcv7HwRQUsrE
+
 $url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.'12?valueRenderOption=FORMATTED_VALUE&key='.$spreadsheetId;
 $ch1 = curl_init($url1);
 curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "GET");
