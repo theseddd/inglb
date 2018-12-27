@@ -19,6 +19,7 @@ $json_array = json_decode($response, true);
 $username = $events2['displayName'];
 curl_close($ch1);
 
+print_r(array_values($json_array));
 $elementCount  = count($json_array);
 
 
