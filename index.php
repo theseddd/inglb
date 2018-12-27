@@ -8,13 +8,14 @@ $apikey = "AIzaSyAgSEnkENLqDB2Udps_qKvXcv7HwRQUsrE";
 $range_Y = strval(date("Y"));
 $range_M = strval(date("m"));
 
-//$header = array('Content-Type: application/json');
+$header = array('Content-Type: application/json');
 
-$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.'12?valueRenderOption=FORMATTED_VALUE&key='.$spreadsheetId;
+//$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.'12?valueRenderOption=FORMATTED_VALUE&key='.$spreadsheetId;
+$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30/values/2018%2F12?valueRenderOption=FORMATTED_VALUE&key=AIzaSyAgSEnkENLqDB2Udps_qKvXcv7HwRQUsrE';
 $ch1 = curl_init($url1);
 curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "GET");
 curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
-//curl_setopt($ch1, CURLOPT_HTTPHEADER, $header);
+curl_setopt($ch1, CURLOPT_HTTPHEADER, $header);
 curl_setopt($ch1, CURLOPT_FOLLOWLOCATION, 1);			
 $response = curl_exec($ch1);			
 $json_array = json_decode($response, true);
