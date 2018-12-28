@@ -30,7 +30,7 @@ $range_M = strval(date("m"));
 $header = array('Content-Type: application/json');
 	// Build message to reply back
 $data2 = [
-	'values' => 'text'
+	'values' => [['1','1','1']]
 	
 ];
 			
