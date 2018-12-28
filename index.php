@@ -38,7 +38,7 @@ $url2 = 'https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljC
 $post2 = json_encode($data2);
 echo $post2;
 $ch2 = curl_init($url2);
-curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST2");
+curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch2, CURLOPT_POSTFIELDS, $post2);
 curl_setopt($ch2, CURLOPT_HTTPHEADER, $header);
