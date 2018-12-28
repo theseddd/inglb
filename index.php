@@ -33,7 +33,8 @@ $data2 = [
 	'values' => [['1','1','1']]
 	
 ];
-			
+		
+
 // Make a POST Request to Messaging API to reply to sender
 $url2 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.':append?valueInputOption=RAW&key='.$apikey;
 
