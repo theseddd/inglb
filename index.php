@@ -33,7 +33,7 @@ $url = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/
 //create a new cURL resource
 $ch = curl_init($url);
 //setup request to send json via POST
-$data = array(array('1','2','3'););
+$data = array(array('1','2','3'));
 $payload = json_encode(array("range" => $data));
 //attach encoded JSON string to the POST fields
 curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
