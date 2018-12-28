@@ -28,8 +28,8 @@ $range_M = strval(date("m"));
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // Make a POST Request to Messaging API to reply to sender
-$url = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.':append?valueInputOption=RAW&key='.$apikey;
-//$url2 = 'https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30/values/2018%2F12:append?valueInputOption=RAW&key=AIzaSyAgSEnkENLqDB2Udps_qKvXcv7HwRQUsrE';
+//$url = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.':append?valueInputOption=RAW&key='.$apikey;
+$url = 'https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30/values/2018%2F12:append?valueInputOption=RAW&key=AIzaSyAgSEnkENLqDB2Udps_qKvXcv7HwRQUsrE';
 //create a new cURL resource
 $ch = curl_init($url);
 //setup request to send json via POST
