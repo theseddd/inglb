@@ -10,7 +10,7 @@ $range_M = strval(date("m"));
 
 
 //////////////////////////////////////////////////////////////////////////////////////
-//$header = array('Content-Type: application/json');
+$header = array('Content-Type: application/json');
 //$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.'12?valueRenderOption=FORMATTED_VALUE&key='.$spreadsheetId;
 //$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.'?valueRenderOption=FORMATTED_VALUE&key='.$apikey;
 //$ch1 = curl_init($url1);
@@ -35,13 +35,12 @@ $ch = curl_init($url);
 //setup request to send json via POST
 $data = array(array('1','2','3'));
 $payload = json_encode(array('values' => $data));
-//attach encoded JSON string to the POST fields
-curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-//set the content type to application/json
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-//return response instead of outputting
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//execute the POST request
+curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+
 $result = curl_exec($ch);
 //close cURL resource
 curl_close($ch);
