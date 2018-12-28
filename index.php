@@ -38,16 +38,16 @@ $url2 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values
 $post2 = json_encode($data2);
 echo $post2;
 //$post2 = '{}';
-//$ch2 = curl_init($url2);
-//curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST");
-//curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
-//curl_setopt($ch2, CURLOPT_POSTFIELDS, $post2);
-//curl_setopt($ch2, CURLOPT_HTTPHEADER, $header);
-//curl_setopt($ch2, CURLOPT_FOLLOWLOCATION, 1);
-//$result = curl_exec($ch2);
-//$json_array = json_decode($result, true);
+$ch2 = curl_init($url2);
+curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch2, CURLOPT_POSTFIELDS, $post2);
+curl_setopt($ch2, CURLOPT_HTTPHEADER, $header);
+curl_setopt($ch2, CURLOPT_FOLLOWLOCATION, 1);
+$result = curl_exec($ch2);
+$json_array = json_decode($result, true);
 
-//curl_close($ch2);
+curl_close($ch2);
 ///////////////////////////////////////////////////////////////////////////////////////
 //print_r(array_values($json_array));
 echo "U".$elementCount;
