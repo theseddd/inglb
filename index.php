@@ -39,6 +39,7 @@ $data2 = [
 $url2 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.':append?valueInputOption=RAW&key='.$apikey;
 
 $post2 = json_encode($data2);
+echo $post2;
 $ch2 = curl_init($url2);
 curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST2");
 curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
