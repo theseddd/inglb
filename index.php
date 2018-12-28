@@ -51,3 +51,4 @@ print_r(array_values($json_array));
 echo "U".$elementCount;
 echo "DateTime".$timestamp;
 echo "Hello LINE BOT";
+
