@@ -29,10 +29,7 @@ $range_M = strval(date("m"));
 ///////////////////////////////////////////////////////////////////////////////////////
 $header = array('Content-Type: application/json');
 	// Build message to reply back
-$data2 = [
-	'values' => [['1','1','1']]
-	
-];
+$data2 = [];
 		
 
 // Make a POST Request to Messaging API to reply to sender
