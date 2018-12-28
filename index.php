@@ -34,7 +34,7 @@ $url = 'https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljCw
 $ch = curl_init($url);
 //setup request to send json via POST
 $data = array(array('1','2','3'));
-$payload = json_encode(array('values' => $data));
+$payload = json_encode(array());
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
