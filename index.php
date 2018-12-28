@@ -33,10 +33,11 @@ $data2 = ['range':[['','','']]];
 		
 
 // Make a POST Request to Messaging API to reply to sender
-//$url2 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.':append?valueInputOption=RAW&key='.$apikey;
-$url2 = 'https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30/values/2018%2F12:append?valueInputOption=RAW&key=AIzaSyAgSEnkENLqDB2Udps_qKvXcv7HwRQUsrE';
+$url2 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.':append?valueInputOption=RAW&key='.$apikey;
+//$url2 = 'https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30/values/2018%2F12:append?valueInputOption=RAW&key=AIzaSyAgSEnkENLqDB2Udps_qKvXcv7HwRQUsrE';
 $post2 = json_encode($data2);
 echo $post2;
+$post2 = '{}';
 $ch2 = curl_init($url2);
 curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
