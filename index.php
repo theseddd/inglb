@@ -53,10 +53,10 @@ $range_M = strval(date("m"));
 
 // รวมไฟล์ Autoloading Classes
 require_once 'src/Google/autoload.php';
-define('SERVICE_EMAIL', {อีเมลล์ในหน้า Service Account});
-define('PATH_KEY12', {ที่อยู่ไฟล์ p12 ที่โหลดมา});
-define('APPLICATION_NAME', {ชื่อแอพฯ ใส่อะไรก็ได้});
-define('FILE_ID', {ID ของ Sheet ที่เราต้องการอ่าน});
+define('SERVICE_EMAIL', 'wuttichai@innergylab.com');
+define('PATH_KEY12', 'client_secret_920015454676-eg9amjec1ibkillsp4puet1q27dic3gp.apps.googleusercontent.com.json');
+define('APPLICATION_NAME', 'bot');
+define('FILE_ID', '1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30');
 // สร้าง Service Drive
 $client = new Google_Client();
 $client->setApplicationName(APPLICATION_NAME);
