@@ -10,7 +10,7 @@ $range_M = strval(date("m"));
 
 
 //////////////////////////////////////////////////////////////////////////////////////
-$header = array('Content-Type: application/json');
+//$header = array('Content-Type: application/json');
 //$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.'12?valueRenderOption=FORMATTED_VALUE&key='.$spreadsheetId;
 //$url1 = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.'?valueRenderOption=FORMATTED_VALUE&key='.$apikey;
 //$ch1 = curl_init($url1);
@@ -29,25 +29,46 @@ $header = array('Content-Type: application/json');
 ///////////////////////////////////////////////////////////////////////////////////////
 // Make a POST Request to Messaging API to reply to sender
 //$url = 'https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/'.$range_Y.'%2F'.$range_M.':append?valueInputOption=RAW&key='.$apikey;
-$url = 'https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30/values/2018%2F12:append?valueInputOption=RAW&key=AIzaSyC98w8aGPh5ptWcBOf05JlIjU213LruF_I';
+//$url = 'https://sheets.googleapis.com/v4/spreadsheets/1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30/values/2018%2F12:append?valueInputOption=RAW&key=AIzaSyC98w8aGPh5ptWcBOf05JlIjU213LruF_I';
 //create a new cURL resource
-$ch = curl_init($url);
+//$ch = curl_init($url);
 //setup request to send json via POST
-$data = array(array('1','2','3'));
-$payload = json_encode(array());
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+//$data = array(array('1','2','3'));
+//$payload = json_encode(array());
+//curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+//curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+//curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+//curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 
-$result = curl_exec($ch);
+//$result = curl_exec($ch);
 //close cURL resource
-curl_close($ch);
-$json_array = json_decode($result, true);
+//curl_close($ch);
+//$json_array = json_decode($result, true);
 ///////////////////////////////////////////////////////////////////////////////////////
-print_r(array_values($json_array));
-echo "U".$elementCount;
-echo "DateTime".$timestamp;
-echo "Hello LINE BOT";
+//print_r(array_values($json_array));
+//echo "U".$elementCount;
+//echo "DateTime".$timestamp;
+//echo "Hello LINE BOT";
+
+// รวมไฟล์ Autoloading Classes
+require_once 'src/Google/autoload.php';
+define('SERVICE_EMAIL', {อีเมลล์ในหน้า Service Account});
+define('PATH_KEY12', {ที่อยู่ไฟล์ p12 ที่โหลดมา});
+define('APPLICATION_NAME', {ชื่อแอพฯ ใส่อะไรก็ได้});
+define('FILE_ID', {ID ของ Sheet ที่เราต้องการอ่าน});
+// สร้าง Service Drive
+$client = new Google_Client();
+$client->setApplicationName(APPLICATION_NAME);
+$service = new Google_Service_Drive($client);
+// สร้างและกำหนด Authentication Assertion Credentials ให้กับ Client
+$key = file_get_contents(PATH_KEY12);
+$cred = new Google_Auth_AssertionCredentials(SERVICE_EMAIL, array('https://www.googleapis.com/auth/drive', 'https://spreadsheets.google.com/feeds'), $key);
+$client->setAssertionCredentials($cred);
+if ($client->getAuth()->isAccessTokenExpired()) {
+$client->getAuth()->refreshTokenWithAssertion($cred);
+}
+// เก็บค่า Access token ไว้ใช้กับ Sheet API
+$resultArray = json_decode($_SESSION['service_token']);
+$accessToken = $resultArray->access_token;
 
