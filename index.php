@@ -59,16 +59,16 @@ define('APPLICATION_NAME', 'bot');
 define('FILE_ID', '1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30');
 // สร้าง Service Drive
 $client = new Google_Client();
-$client->setApplicationName(APPLICATION_NAME);
-$service = new Google_Service_Drive($client);
+//$client->setApplicationName(APPLICATION_NAME);
+//$service = new Google_Service_Drive($client);
 // สร้างและกำหนด Authentication Assertion Credentials ให้กับ Client
-$key = file_get_contents(PATH_KEY12);
-$cred = new Google_Auth_AssertionCredentials(SERVICE_EMAIL, array('https://www.googleapis.com/auth/drive', 'https://spreadsheets.google.com/feeds'), $key);
-$client->setAssertionCredentials($cred);
-if ($client->getAuth()->isAccessTokenExpired()) {
-$client->getAuth()->refreshTokenWithAssertion($cred);
-}
+//$key = file_get_contents(PATH_KEY12);
+//$cred = new Google_Auth_AssertionCredentials(SERVICE_EMAIL, array('https://www.googleapis.com/auth/drive', 'https://spreadsheets.google.com/feeds'), $key);
+//$client->setAssertionCredentials($cred);
+//if ($client->getAuth()->isAccessTokenExpired()) {
+//$client->getAuth()->refreshTokenWithAssertion($cred);
+//}
 // เก็บค่า Access token ไว้ใช้กับ Sheet API
-$resultArray = json_decode($_SESSION['service_token']);
-$accessToken = $resultArray->access_token;
+//$resultArray = json_decode($_SESSION['service_token']);
+//$accessToken = $resultArray->access_token;
 
