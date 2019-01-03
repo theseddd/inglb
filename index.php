@@ -53,12 +53,12 @@ $range_M = strval(date("m"));
 
 // รวมไฟล์ Autoloading Classes
 require_once 'src/Google/autoload.php';
-define('SERVICE_EMAIL', 'wuttichai@innergylab.com');
-define('PATH_KEY12', 'client_secret_920015454676-eg9amjec1ibkillsp4puet1q27dic3gp.apps.googleusercontent.com.json');
-define('APPLICATION_NAME', 'bot');
-define('FILE_ID', '1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30');
+//define('SERVICE_EMAIL', 'wuttichai@innergylab.com');
+//define('PATH_KEY12', 'client_secret_920015454676-eg9amjec1ibkillsp4puet1q27dic3gp.apps.googleusercontent.com.json');
+//define('APPLICATION_NAME', 'bot');
+//define('FILE_ID', '1XJ7j_zMc-2tBKoEx0RAMnljCwdOfNacGQP8i2K-jM30');
 // สร้าง Service Drive
-$client = new Google_Client();
+//$client = new Google_Client();
 //$client->setApplicationName(APPLICATION_NAME);
 //$service = new Google_Service_Drive($client);
 // สร้างและกำหนด Authentication Assertion Credentials ให้กับ Client
