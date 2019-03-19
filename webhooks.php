@@ -53,40 +53,40 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
-if (!is_null($events['events'])) {
+//if (!is_null($events['events'])) {
 	// Loop through each event
-	foreach ($events['events'] as $event) {
+//	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+//		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$userid = $event['source']['userId'];
-			$username = get_username($userid,$access_token);			
+//			$userid = $event['source']['userId'];
+//			$username = get_username($userid,$access_token);			
 			
 			// Get replyToken
-			$replyToken = $event['replyToken'];
-			$_msg = $event['message']['text'];
-			if(strpos($_msg, 'TAMS')!== false||strpos($_msg, 'Tams')!== false||strpos($_msg, 'tams')!== false){
-				if(strpos($_msg, 'สวัสดี') !== false){
-					$text = "สวัสดี ".$username;	
-					message_reply($userid,$access_token,$replyToken,$text);
-				}else if(strpos($_msg, 'ทำงานนอกสถานที่') !== false){
-					$text = "บันทึกเรียบร้อยแล้ว @".$username;	
-					message_reply($userid,$access_token,$replyToken,$text);
-				}else if(strpos($_msg, 'ลาป่วย') !== false){
-					$text = "บันทึกเรียบร้อยแล้ว @".$username;		
-					message_reply($userid,$access_token,$replyToken,$text);
-				}else if(strpos($_msg, 'ลากิจ') !== false){
-					$text = "บันทึกเรียบร้อยแล้ว @".$username;		
-					message_reply($userid,$access_token,$replyToken,$text);
-				}else if(strpos($_msg, 'ลาพักร้อน') !== false){
-					$text = "บันทึกเรียบร้อยแล้ว @".$username;	
-					message_reply($userid,$access_token,$replyToken,$text);
-				}else{
-					$text = "You is ".$username." UserId:".$userid;	
-					message_reply($userid,$access_token,$replyToken,$text);
-				}
-			}
-		}
-	}
-}
+//			$replyToken = $event['replyToken'];
+//			$_msg = $event['message']['text'];
+//			if(strpos($_msg, 'TAMS')!== false||strpos($_msg, 'Tams')!== false||strpos($_msg, 'tams')!== false){
+//				if(strpos($_msg, 'สวัสดี') !== false){
+//					$text = "สวัสดี ".$username;	
+//					message_reply($userid,$access_token,$replyToken,$text);
+//				}else if(strpos($_msg, 'ทำงานนอกสถานที่') !== false){
+//					$text = "บันทึกเรียบร้อยแล้ว @".$username;	
+//					message_reply($userid,$access_token,$replyToken,$text);
+//				}else if(strpos($_msg, 'ลาป่วย') !== false){
+//					$text = "บันทึกเรียบร้อยแล้ว @".$username;		
+//					message_reply($userid,$access_token,$replyToken,$text);
+//				}else if(strpos($_msg, 'ลากิจ') !== false){
+//					$text = "บันทึกเรียบร้อยแล้ว @".$username;		
+//					message_reply($userid,$access_token,$replyToken,$text);
+//				}else if(strpos($_msg, 'ลาพักร้อน') !== false){
+//					$text = "บันทึกเรียบร้อยแล้ว @".$username;	
+//					message_reply($userid,$access_token,$replyToken,$text);
+//				}else{
+//					$text = "You is ".$username." UserId:".$userid;	
+//					message_reply($userid,$access_token,$replyToken,$text);
+//				}
+//			}
+//		}
+//	}
+//}
 echo "OK";
