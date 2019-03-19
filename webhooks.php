@@ -1,11 +1,11 @@
 <?php // callback.php
 
-//require "vendor/autoload.php";
+require "vendor/autoload.php";
 //require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
-//date_default_timezone_set("Asia/Bangkok");
-//$timestamp = str(date("d/m/Y h:i:s"));
-//$date = str(date("d/m/Y"));
-//$time = str(date("h:i:s"));
+date_default_timezone_set("Asia/Bangkok");
+$timestamp = str(date("d/m/Y h:i:s"));
+$date = str(date("d/m/Y"));
+$time = str(date("h:i:s"));
 //function get_username($u_id,$a_token)
 //{
 //	$header = array('Content-Type: application/json', 'Authorization: Bearer ' . $a_token);
