@@ -1,6 +1,6 @@
 <?php // callback.php
 
-require "vendor/autoload.php";
+//require "vendor/autoload.php";
 //require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 date_default_timezone_set("Asia/Bangkok");
 $timestamp = str(date("d/m/Y h:i:s"));
@@ -46,12 +46,12 @@ function message_reply($u_id,$a_token,$rp_token,$ms)
 		$result = curl_exec($ch2);
 		curl_close($ch2);
 }
-$access_token = 'cZeyyqmrjKEi1gWN6pUlPPpZTvTfS8PSmocdnOwaZYbcnn6yFsSdKpGqRAJvy8qYg2YxNTPN1R/89DmRzcpdLRbO9Y3TptL99fuxg0kv4LAaGK9kIKoj00Xu+gJyQPZhW75SsXtunyedT8ZURD4JoQdB04t89/1O/w1cDnyilFU=';
+//$access_token = 'cZeyyqmrjKEi1gWN6pUlPPpZTvTfS8PSmocdnOwaZYbcnn6yFsSdKpGqRAJvy8qYg2YxNTPN1R/89DmRzcpdLRbO9Y3TptL99fuxg0kv4LAaGK9kIKoj00Xu+gJyQPZhW75SsXtunyedT8ZURD4JoQdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
-$content = file_get_contents('php://input');
+//$content = file_get_contents('php://input');
 // Parse JSON
-$events = json_decode($content, true);
+//$events = json_decode($content, true);
 // Validate parsed JSON data
 //if (!is_null($events['events'])) {
 	// Loop through each event
@@ -90,3 +90,5 @@ $events = json_decode($content, true);
 //	}
 //}
 echo "OK";
+
+?>
