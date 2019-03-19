@@ -46,7 +46,7 @@ function message_reply($u_id,$a_token,$rp_token,$ms)
 		$result = curl_exec($ch2);
 		curl_close($ch2);
 }
-$access_token = 'cZeyyqmrjKEi1gWN6pUlPPpZTvTfS8PSmocdnOwaZYbcnn6yFsSdKpGqRAJvy8qYg2YxNTPN1R/89DmRzcpdLRbO9Y3TptL99fuxg0kv4LAaGK9kIKoj00Xu+gJyQPZhW75SsXtunyedT8ZURD4JoQdB04t89/1O/w1cDnyilFU=';
+$access_token = 'mosczYQBdVUntwuHV5CFH3YQJYex7p2LiqLHnu/sEIgzog6qTILf/MalDMkeqjF7g2YxNTPN1R/89DmRzcpdLRbO9Y3TptL99fuxg0kv4LDLlKpHdRhDeejKUi2e1zG+qmBsb+feRWxnTl1rPj1QVwdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
 $content = file_get_contents('php://input');
